@@ -189,10 +189,12 @@ int center = 1500;
 The line position is calculated using:
 
 Position = Sum of ( Strength[i] * weight[i] ) / Sum of Strength[i] ;
+
+
 Where:
 
-- \(S[i]\) represents the normalized sensor strength.
-- \(W[i]\) represents the corresponding sensor position weight.
+- ( S[i] ) represents the normalized sensor strength.
+- ( W[i] ) represents the corresponding sensor position weight.
 
 The calculated position ranges approximately from 0 to 3000.
 
@@ -204,9 +206,9 @@ If the total sensor strength is zero, the algorithm identifies that the line has
 
 The deviation of the line from the center is calculated as:
 
-\
+
 Error = Position - Center
-\
+
 
 This establishes the following sign convention:
 
@@ -226,17 +228,17 @@ The controller consists of three components:
 
 Responds to the current error.
 
-\
+
 P = ( Kp * Error ) / dt 
-\
+
 
 **Integral (I)**
 
 Accumulates error over time to compensate for persistent deviations.
 
-\
+
 I = I + ( Ki * Error ) / dt
-\
+
 
 **Derivative (D)**
 
@@ -246,9 +248,9 @@ D = kd * ( Error - Previous Error ) / dt
 
 The final correction is:
 
-\
+
 Correction = P + I + D
-\
+
 
 The correction is constrained between -127.5 and +127.5 to limit the motor-speed adjustment.
 
@@ -275,19 +277,19 @@ Instead of directly controlling the steering angle, it adjusts the relative spee
 
 The motor speeds are calculated as:
 
-\
-LeftSpeed = BaseSpeed + Correction
-\
 
-\
-RightSpeed=BaseSpeed-Correction
-\
+LeftSpeed = BaseSpeed + Correction
+
+
+
+RightSpeed = BaseSpeed - Correction
+
 
 The base speed is also adjusted to maintain headroom for the correction:
 
-\ 
+
 BaseSpeed = min( 180 , 255 - |Correction| )
-\
+
 
 Both motor speeds are constrained between 30 and 255 during normal line tracking.
 
@@ -472,11 +474,11 @@ It is also a foundation for exploring more advanced robotics concepts, including
 
 ## 11. Author
 
-**Developed by:** [ Projit Chanda]
+**Developed by:**  Projit Chanda
 
-**GitHub:** [https://github.com/most-incredible-guy-on-earth]
+**GitHub:**   https://github.com/most-incredible-guy-on-earth
 
-**LinkedIn:** [https://www.linkedin.com/in/projit-chanda-912921411]
+**LinkedIn:**  https://www.linkedin.com/in/projit-chanda-912921411
 
 ---
 
