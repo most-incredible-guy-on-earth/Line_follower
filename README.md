@@ -157,7 +157,7 @@ The normalization formula is:
 \
 S[i] =
 \( W[i]-R[i] )*1000 /( W[i] - B[i] )
-\
+
 
 Where:
 
@@ -188,16 +188,11 @@ int center = 1500;
 
 The line position is calculated using:
 
-\[
-Position =
-\frac{\sum_{i=0}^{3} S_iW_i}
-{\sum_{i=0}^{3}S_i}
-\]
-
+Position = Sum of ( Strength[i] * weight[i] ) / Sum of Strength[i] ;
 Where:
 
-- \(S_i\) represents the normalized sensor strength.
-- \(W_i\) represents the corresponding sensor position weight.
+- \(S[i]\) represents the normalized sensor strength.
+- \(W[i]\) represents the corresponding sensor position weight.
 
 The calculated position ranges approximately from 0 to 3000.
 
@@ -209,9 +204,9 @@ If the total sensor strength is zero, the algorithm identifies that the line has
 
 The deviation of the line from the center is calculated as:
 
-\[
+\
 Error = Position - Center
-\]
+\
 
 This establishes the following sign convention:
 
@@ -231,32 +226,29 @@ The controller consists of three components:
 
 Responds to the current error.
 
-\[
-P=K_p \times Error
-\]
+\
+P = ( Kp * Error ) / dt 
+\
 
 **Integral (I)**
 
 Accumulates error over time to compensate for persistent deviations.
 
-\[
-I=I+K_i \times Error \times dt
-\]
+\
+I = I + ( Ki * Error ) / dt
+\
 
 **Derivative (D)**
 
 Measures the rate of change of error and helps reduce overshooting.
 
-\[
-D=K_d \times
-\frac{Error-PreviousError}{dt}
-\]
+D = kd * ( Error - Previous Error ) / dt 
 
 The final correction is:
 
-\[
-Correction=P+I+D
-\]
+\
+Correction = P + I + D
+\
 
 The correction is constrained between -127.5 and +127.5 to limit the motor-speed adjustment.
 
@@ -283,19 +275,19 @@ Instead of directly controlling the steering angle, it adjusts the relative spee
 
 The motor speeds are calculated as:
 
-\[
-LeftSpeed=BaseSpeed+Correction
-\]
+\
+LeftSpeed = BaseSpeed + Correction
+\
 
-\[
+\
 RightSpeed=BaseSpeed-Correction
-\]
+\
 
 The base speed is also adjusted to maintain headroom for the correction:
 
-\[
-BaseSpeed=\min(180,255-|Correction|)
-\]
+\ 
+BaseSpeed = min( 180 , 255 - |Correction| )
+\
 
 Both motor speeds are constrained between 30 and 255 during normal line tracking.
 
@@ -480,11 +472,11 @@ It is also a foundation for exploring more advanced robotics concepts, including
 
 ## 11. Author
 
-**Developed by:** [Your Name]
+**Developed by:** [ Projit Chanda]
 
-**GitHub:** [Your GitHub Profile]
+**GitHub:** [https://github.com/most-incredible-guy-on-earth]
 
-**LinkedIn:** [Your LinkedIn Profile]
+**LinkedIn:** [https://www.linkedin.com/in/projit-chanda-912921411]
 
 ---
 
