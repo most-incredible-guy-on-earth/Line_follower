@@ -13,13 +13,26 @@ This project explores the fundamentals of embedded systems, sensor processing, f
 
 **Demo Video:** 
 
-[▶ Watch the Robot in Action](YOUR_DEMONSTRATION_VIDEO_LINK_HERE)
+1.Watch robot in action
 
-> Replace the link above with your YouTube or Google Drive demonstration video.
+
+
+https://github.com/user-attachments/assets/65d53b0e-50eb-472c-b960-5c51070aef10
+
+
+
+2.
+https://github.com/user-attachments/assets/94c1ba49-7528-4503-aabb-0e0ffd3db7a7
+
+3.
+
+https://github.com/user-attachments/assets/06ba598a-ab3f-4063-b5bb-922e9ca6858d
+
+
 
 **Project Images:**
 
-Add photographs of the completed robot, sensor arrangement and electronics here.
+Later
 
 ---
 
@@ -141,17 +154,17 @@ Raw analog readings are converted into normalized strength values between 0 and 
 
 The normalization formula is:
 
-\[
-S_i =
-\frac{W_i-R_i}{W_i-B_i}\times1000
-\]
+\
+S[i] =
+\( W[i]-R[i] )*1000 /( W[i] - B[i] )
+\
 
 Where:
 
-- \(S_i\) = Normalized sensor strength.
-- \(W_i\) = Calibrated white reading.
-- \(B_i\) = Calibrated black reading.
-- \(R_i\) = Current sensor reading.
+- \(S[i]\) = Normalized sensor strength.
+- \(W[i]\) = Calibrated white reading.
+- \(B[i]\) = Calibrated black reading.
+- \(R[i]\) = Current sensor reading.
 
 The resulting values are constrained between 0 and 1000.
 
